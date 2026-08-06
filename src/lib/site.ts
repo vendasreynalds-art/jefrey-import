@@ -9,7 +9,7 @@ export const SITE = {
   horario: "Segunda a sexta, 8h às 18h",
   instagram: "https://instagram.com/ragiimport",
   facebook: "https://facebook.com/ragiimport",
-  url: "https://ragi-import-fynxia.vercel.app",
+  url: "https://ragi-import.vercel.app",
 };
 
 export function linkWhatsApp(mensagem?: string) {
