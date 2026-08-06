@@ -40,7 +40,7 @@ export default function Hero() {
             Importação Direta de Peças Automotivas
           </span>
 
-          <h1 className="mt-6 font-heading text-4xl font-bold leading-tight text-white sm:text-5xl">
+          <h1 className="mt-6 text-balance font-heading text-4xl font-bold leading-tight text-white sm:text-5xl">
             A peça certa para o seu carro, com{" "}
             <span className="text-accent">compatibilidade garantida</span>.
           </h1>
@@ -81,13 +81,14 @@ export default function Hero() {
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Ex: farol Civic, LT-CO-2023..."
+                placeholder="Ex: farol Civic, LT-CO-2023…"
+                autoComplete="off"
                 className="w-full border-none bg-transparent text-sm text-primary outline-none placeholder:text-secondary/60"
               />
             </div>
             <button
               type="submit"
-              className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 cursor-pointer"
+              className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white transition-opacity duration-200 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
             >
               Buscar peça
               <ArrowRight size={16} aria-hidden="true" />
@@ -147,7 +148,7 @@ export default function Hero() {
 
             <button
               type="submit"
-              className="col-span-2 mt-1 inline-flex items-center justify-center gap-2 rounded-lg border-2 border-primary px-5 py-2.5 text-sm font-semibold text-primary transition-all duration-200 hover:bg-primary hover:text-white cursor-pointer"
+              className="col-span-2 mt-1 inline-flex items-center justify-center gap-2 rounded-lg border-2 border-primary px-5 py-2.5 text-sm font-semibold text-primary transition-colors duration-200 hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
             >
               Ver peças compatíveis
             </button>

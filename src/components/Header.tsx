@@ -19,8 +19,8 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur relative">
-      <div className="border-b border-border bg-primary">
-        <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-1.5 text-xs font-medium text-white sm:justify-start sm:px-6 lg:px-8">
+      <div className="hidden border-b border-border bg-primary sm:block">
+        <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-1.5 text-xs font-medium text-white sm:px-6 lg:px-8">
           <ShieldCheck size={14} aria-hidden="true" />
           Importação Direta — compatibilidade verificada em todas as peças
         </div>
@@ -29,7 +29,7 @@ export default function Header() {
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="flex items-center gap-2 font-heading text-lg font-bold text-primary cursor-pointer"
+          className="flex items-center gap-2 rounded-sm font-heading text-lg font-bold text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
         >
           <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-on-primary">
             RG
@@ -47,7 +47,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-secondary transition-colors duration-200 hover:text-primary cursor-pointer"
+              className="rounded-sm text-sm font-medium text-secondary transition-colors duration-200 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
             >
               {link.label}
             </Link>
@@ -59,14 +59,14 @@ export default function Header() {
             type="button"
             onClick={() => setSearchOpen(true)}
             aria-label="Buscar peça"
-            className="flex h-11 w-11 items-center justify-center rounded-lg text-primary transition-colors duration-200 hover:bg-muted cursor-pointer"
+            className="flex h-11 w-11 items-center justify-center rounded-lg text-primary transition-colors duration-200 hover:bg-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
           >
             <Search size={20} aria-hidden="true" />
           </button>
 
           <Link
             href="/orcamento"
-            className="hidden items-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:inline-flex cursor-pointer"
+            className="hidden items-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-[opacity,transform] duration-200 hover:opacity-90 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:inline-flex cursor-pointer"
           >
             Solicitar Orçamento
           </Link>
@@ -96,7 +96,7 @@ export default function Header() {
                 <Link
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block rounded-lg px-3 py-3 text-base font-medium text-secondary transition-colors duration-200 hover:bg-muted hover:text-primary cursor-pointer"
+                  className="block rounded-lg px-3 py-3 text-base font-medium text-secondary transition-colors duration-200 hover:bg-muted hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
                 >
                   {link.label}
                 </Link>
@@ -111,7 +111,7 @@ export default function Header() {
                   key={cat.slug}
                   href={`/pecas?categoria=${cat.slug}`}
                   onClick={() => setIsOpen(false)}
-                  className="block rounded-lg px-3 py-2.5 text-sm text-secondary transition-colors duration-200 hover:bg-muted hover:text-primary cursor-pointer"
+                  className="block rounded-lg px-3 py-2.5 text-sm text-secondary transition-colors duration-200 hover:bg-muted hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
                 >
                   {cat.nome}
                 </Link>
@@ -121,7 +121,7 @@ export default function Header() {
               <Link
                 href="/orcamento"
                 onClick={() => setIsOpen(false)}
-                className="block rounded-lg bg-accent px-3 py-3 text-center text-base font-semibold text-white shadow-md transition-all duration-200 hover:opacity-90 cursor-pointer"
+                className="block rounded-lg bg-accent px-3 py-3 text-center text-base font-semibold text-white shadow-md transition-opacity duration-200 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
               >
                 Solicitar Orçamento
               </Link>
