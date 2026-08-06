@@ -1,33 +1,53 @@
 import type { Metadata } from "next";
-import { Lexend, Source_Sans_3 } from "next/font/google";
+import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import { SITE } from "@/lib/site";
 
-const lexend = Lexend({
+const montserrat = Montserrat({
   variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["600", "700"],
 });
 
-const sourceSans = Source_Sans_3({
+const inter = Inter({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Importadora | Soluções em Importação e Comércio Exterior",
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: `${SITE.nome} | Peças Automotivas Importadas`,
+    template: `%s | ${SITE.nome}`,
+  },
   description:
-    "Importadora especializada em comércio exterior, logística internacional e desembaraço aduaneiro para empresas que precisam de confiabilidade e agilidade.",
+    "Importação direta de faróis, lanternas, peças de motor, lâmpadas, multimídia e itens de tunning, com compatibilidade verificada e entrega para todo o Brasil.",
+  openGraph: {
+    title: `${SITE.nome} | Peças Automotivas Importadas`,
+    description:
+      "Importação direta de peças automotivas com compatibilidade verificada. Solicite seu orçamento.",
+    url: SITE.url,
+    siteName: SITE.nome,
+    locale: "pt_BR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pt-BR"
-      className={`${lexend.variable} ${sourceSans.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground font-body">
-        {children}
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );
