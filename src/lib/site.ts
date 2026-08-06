@@ -9,7 +9,7 @@ export const SITE = {
   horario: "Segunda a sexta, 8h às 18h",
   instagram: "https://instagram.com/jefreyimport",
   facebook: "https://facebook.com/jefreyimport",
-  url: "https://jefrey-import.vercel.app",
+  url: "https://jefrey-import-fynxia.vercel.app",
 };
 
 export function linkWhatsApp(mensagem?: string) {
