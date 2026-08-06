@@ -6,8 +6,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Fale Conosco",
-  description:
-    "Entre em contato com a equipe da JefRey Import. Respondemos em até 1 dia útil.",
+  description: `Entre em contato com a equipe da ${SITE.nome}. Respondemos em até 1 dia útil.`,
 };
 
 const INFOS = [

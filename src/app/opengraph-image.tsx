@@ -40,9 +40,9 @@ export default function OpengraphImage() {
               fontSize: 28,
             }}
           >
-            JR
+            RG
           </div>
-          JefRey Import
+          RaGi Import
         </div>
         <div
           style={{

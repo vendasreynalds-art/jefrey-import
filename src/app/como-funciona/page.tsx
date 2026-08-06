@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Como Funciona",
-  description:
-    "Entenda o passo a passo do processo de cotação e importação de peças automotivas da JefRey Import.",
+  description: `Entenda o passo a passo do processo de cotação e importação de peças automotivas da ${SITE.nome}.`,
 };
 
 const ETAPAS = [

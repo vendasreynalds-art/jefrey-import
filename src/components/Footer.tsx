@@ -13,9 +13,9 @@ export default function Footer() {
             className="flex items-center gap-2 font-heading text-lg font-bold text-white cursor-pointer"
           >
             <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-white">
-              JR
+              RG
             </span>
-            JefRey Import
+            RaGi Import
           </Link>
           <p className="mt-4 text-sm leading-relaxed">
             Importação direta de peças automotivas — faróis, lanternas,
@@ -117,7 +117,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-4 py-6 text-xs text-slate-400 sm:px-6 lg:px-8">
-          © {new Date().getFullYear()} JefRey Import. Todos os direitos
+          © {new Date().getFullYear()} {SITE.nome}. Todos os direitos
           reservados. CNPJ {SITE.cnpj}.
         </div>
       </div>

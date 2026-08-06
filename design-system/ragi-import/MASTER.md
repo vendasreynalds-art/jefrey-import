@@ -1,6 +1,6 @@
-# Design System Master File — JefRey Import
+# Design System Master File — RaGi Import
 
-**Projeto:** JefRey Import — importadora de peças automotivas
+**Projeto:** RaGi Import — importadora de peças automotivas
 **Categoria:** Catálogo B2B/B2C orientado a cotação (não é e-commerce com checkout)
 **Padrão de página:** Hero-Centric + Feature-Rich Showcase (baseado no briefing do cliente)
 **Estilo:** Trust & Authority com energia automotiva (não é glassmorphism/3D/dark OLED — mantém leitura séria e limpa)

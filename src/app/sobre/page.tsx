@@ -5,8 +5,7 @@ import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Sobre Nós",
-  description:
-    "Conheça a JefRey Import, especialista em importação direta de peças automotivas com compatibilidade verificada.",
+  description: `Conheça a ${SITE.nome}, especialista em importação direta de peças automotivas com compatibilidade verificada.`,
 };
 
 const PILARES = [

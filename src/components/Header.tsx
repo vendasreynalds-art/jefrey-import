@@ -32,10 +32,10 @@ export default function Header() {
           className="flex items-center gap-2 font-heading text-lg font-bold text-primary cursor-pointer"
         >
           <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-on-primary">
-            JR
+            RG
           </span>
           <span>
-            JefRey <span className="text-accent">Import</span>
+            RaGi <span className="text-accent">Import</span>
           </span>
         </Link>
 
