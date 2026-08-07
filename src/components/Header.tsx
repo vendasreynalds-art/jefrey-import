@@ -54,8 +54,8 @@ export default function Header() {
           <Image
             src="/logo.png"
             alt="RaGi Parts"
-            width={166}
-            height={50}
+            width={174}
+            height={44}
             priority
             className="h-9 w-auto sm:h-11"
           />
