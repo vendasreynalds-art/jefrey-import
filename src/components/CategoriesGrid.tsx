@@ -24,7 +24,7 @@ export default function CategoriesGrid() {
                 href={`/pecas?categoria=${cat.slug}`}
                 className="group flex flex-col items-center gap-3 rounded-xl border border-border bg-white p-6 text-center shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-lg cursor-pointer"
               >
-                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/5 text-primary transition-colors duration-200 group-hover:bg-accent group-hover:text-white">
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/5 text-primary transition-colors duration-200 group-hover:bg-accent group-hover:text-primary">
                   <Icon size={26} aria-hidden="true" />
                 </span>
                 <span className="font-heading text-sm font-semibold text-primary">

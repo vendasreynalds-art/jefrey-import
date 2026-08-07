@@ -12,7 +12,7 @@ export default function Footer() {
             href="/"
             className="flex items-center gap-2 font-heading text-lg font-bold text-white cursor-pointer"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-white">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-primary">
               RG
             </span>
             RaGi Import

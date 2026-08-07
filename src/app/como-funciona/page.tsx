@@ -81,7 +81,7 @@ export default function ComoFuncionaPage() {
         <div className="mt-14 flex justify-center">
           <Link
             href="/orcamento"
-            className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-white shadow-md transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 cursor-pointer"
+            className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-primary shadow-md transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 cursor-pointer"
           >
             Solicitar Orçamento
             <ArrowRight size={18} aria-hidden="true" />

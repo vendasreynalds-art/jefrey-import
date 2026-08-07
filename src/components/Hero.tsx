@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Search, ArrowRight, ShieldCheck, Truck, Award } from "lucide-react";
 import { MARCAS, MARCAS_VEICULOS } from "@/data/veiculos";
@@ -16,11 +16,20 @@ export default function Hero() {
   const [query, setQuery] = useState("");
   const [marca, setMarca] = useState("");
   const [modelo, setModelo] = useState("");
+  const [queryError, setQueryError] = useState(false);
+  const [isPendingTexto, startTextoTransition] = useTransition();
+  const [isPendingVeiculo, startVeiculoTransition] = useTransition();
 
   function buscarPorTexto(e: React.FormEvent) {
     e.preventDefault();
-    if (!query.trim()) return;
-    router.push(`/pecas?q=${encodeURIComponent(query.trim())}`);
+    if (!query.trim()) {
+      setQueryError(true);
+      return;
+    }
+    setQueryError(false);
+    startTextoTransition(() => {
+      router.push(`/pecas?q=${encodeURIComponent(query.trim())}`);
+    });
   }
 
   function buscarPorVeiculo(e: React.FormEvent) {
@@ -28,7 +37,9 @@ export default function Hero() {
     const params = new URLSearchParams();
     if (marca) params.set("marca", marca);
     if (modelo) params.set("modelo", modelo);
-    router.push(`/pecas?${params.toString()}`);
+    startVeiculoTransition(() => {
+      router.push(`/pecas?${params.toString()}`);
+    });
   }
 
   return (
@@ -47,7 +58,7 @@ export default function Hero() {
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
             Faróis, lanternas, peças de motor, lâmpadas, multimídia e itens
-            de tunning importados diretamente, com verificação de
+            de tuning importados diretamente, com verificação de
             compatibilidade antes do envio.
           </p>
 
@@ -70,27 +81,44 @@ export default function Hero() {
             Encontre sua peça
           </h2>
 
-          <form onSubmit={buscarPorTexto} className="mt-4">
+          <form onSubmit={buscarPorTexto} className="mt-4" noValidate>
             <label htmlFor="hero-search" className="sr-only">
               Buscar por peça, código ou modelo
             </label>
-            <div className="flex items-center gap-2 rounded-lg border border-border px-4 py-3 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
+            <div
+              className={`flex items-center gap-2 rounded-lg border px-4 py-3 focus-within:ring-2 ${
+                queryError
+                  ? "border-red-500 focus-within:border-red-500 focus-within:ring-red-500/20"
+                  : "border-border focus-within:border-primary focus-within:ring-primary/20"
+              }`}
+            >
               <Search size={18} className="shrink-0 text-secondary" aria-hidden="true" />
               <input
                 id="hero-search"
                 type="search"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  if (queryError) setQueryError(false);
+                }}
                 placeholder="Ex: farol Civic, LT-CO-2023…"
                 autoComplete="off"
+                aria-invalid={queryError}
+                aria-describedby={queryError ? "hero-search-error" : undefined}
                 className="w-full border-none bg-transparent text-sm text-primary outline-none placeholder:text-secondary/60"
               />
             </div>
+            {queryError && (
+              <p id="hero-search-error" role="alert" className="mt-1.5 text-xs font-medium text-red-600">
+                Digite o nome da peça ou o código para buscar.
+              </p>
+            )}
             <button
               type="submit"
-              className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white transition-opacity duration-200 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
+              disabled={isPendingTexto}
+              className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white transition-opacity duration-200 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:cursor-not-allowed disabled:opacity-70 cursor-pointer"
             >
-              Buscar peça
+              {isPendingTexto ? "Buscando…" : "Buscar peça"}
               <ArrowRight size={16} aria-hidden="true" />
             </button>
           </form>
@@ -148,9 +176,10 @@ export default function Hero() {
 
             <button
               type="submit"
-              className="col-span-2 mt-1 inline-flex items-center justify-center gap-2 rounded-lg border-2 border-primary px-5 py-2.5 text-sm font-semibold text-primary transition-colors duration-200 hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
+              disabled={isPendingVeiculo}
+              className="col-span-2 mt-1 inline-flex items-center justify-center gap-2 rounded-lg border-2 border-primary px-5 py-2.5 text-sm font-semibold text-primary transition-colors duration-200 hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:cursor-not-allowed disabled:opacity-70 cursor-pointer"
             >
-              Ver peças compatíveis
+              {isPendingVeiculo ? "Buscando…" : "Ver peças compatíveis"}
             </button>
           </form>
         </div>

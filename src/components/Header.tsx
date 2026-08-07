@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, Search, ShieldCheck } from "lucide-react";
 import { CATEGORIAS } from "@/data/categorias";
@@ -16,36 +17,48 @@ const NAV_LINKS = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (!isOpen) return;
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") setIsOpen(false);
     }
+    function onClickOutside(e: MouseEvent) {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    }
     document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
+    document.addEventListener("mousedown", onClickOutside);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("mousedown", onClickOutside);
+    };
   }, [isOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur relative">
-      <div className="hidden border-b border-border bg-primary sm:block">
-        <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-1.5 text-xs font-medium text-white sm:px-6 lg:px-8">
-          <ShieldCheck size={14} aria-hidden="true" />
-          Importação Direta — compatibilidade verificada em todas as peças
+    <header ref={headerRef} className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur relative">
+      <div className="border-b border-border bg-primary">
+        <div className="mx-auto flex max-w-7xl items-center justify-center gap-1.5 px-4 py-1.5 text-center text-[11px] font-medium text-white sm:justify-start sm:gap-2 sm:px-6 sm:text-xs lg:px-8">
+          <ShieldCheck size={14} className="shrink-0" aria-hidden="true" />
+          Garantia em todas as peças — entrega para todo o Brasil
         </div>
       </div>
 
-      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="flex items-center gap-2 rounded-sm font-heading text-lg font-bold text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
+          className="flex shrink-0 items-center rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
         >
-          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-on-primary">
-            RG
-          </span>
-          <span>
-            RaGi <span className="text-accent">Import</span>
-          </span>
+          <Image
+            src="/logo.png"
+            alt="RaGi Parts"
+            width={166}
+            height={50}
+            priority
+            className="h-9 w-auto sm:h-11"
+          />
         </Link>
 
         <nav
@@ -75,7 +88,7 @@ export default function Header() {
 
           <Link
             href="/orcamento"
-            className="hidden items-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-[opacity,transform] duration-200 hover:opacity-90 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:inline-flex cursor-pointer"
+            className="inline-flex items-center rounded-lg bg-accent px-3 py-2 text-xs font-semibold text-primary shadow-md transition-[opacity,transform] duration-200 hover:opacity-90 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:px-5 sm:py-2.5 sm:text-sm cursor-pointer"
           >
             Solicitar Orçamento
           </Link>
@@ -97,7 +110,7 @@ export default function Header() {
         <nav
           id="mobile-menu"
           aria-label="Navegação móvel"
-          className="border-t border-border bg-white px-4 pb-6 pt-2 lg:hidden"
+          className="max-h-[calc(100vh-4.5rem)] overflow-y-auto border-t border-border bg-white px-4 pb-6 pt-2 lg:hidden"
         >
           <ul className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
@@ -130,7 +143,7 @@ export default function Header() {
               <Link
                 href="/orcamento"
                 onClick={() => setIsOpen(false)}
-                className="block rounded-lg bg-accent px-3 py-3 text-center text-base font-semibold text-white shadow-md transition-opacity duration-200 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
+                className="block rounded-lg bg-accent px-3 py-3 text-center text-base font-semibold text-primary shadow-md transition-opacity duration-200 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring cursor-pointer"
               >
                 Solicitar Orçamento
               </Link>

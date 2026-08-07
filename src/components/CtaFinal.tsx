@@ -15,7 +15,7 @@ export default function CtaFinal() {
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
           <Link
             href="/orcamento"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-white shadow-md transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-primary shadow-md transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 cursor-pointer"
           >
             Solicitar Orçamento
             <ArrowRight size={18} aria-hidden="true" />

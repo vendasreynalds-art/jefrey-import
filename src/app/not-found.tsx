@@ -17,7 +17,7 @@ export default function NotFound() {
       <div className="mt-8 flex flex-col gap-4 sm:flex-row">
         <Link
           href="/pecas"
-          className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-white shadow-md transition-all duration-200 hover:opacity-90 cursor-pointer"
+          className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-base font-semibold text-primary shadow-md transition-all duration-200 hover:opacity-90 cursor-pointer"
         >
           Ver Catálogo de Peças
           <ArrowRight size={18} aria-hidden="true" />
