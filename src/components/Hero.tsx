@@ -97,7 +97,7 @@ export default function Hero() {
 
           <div className="my-6 flex items-center gap-3">
             <div className="h-px flex-1 bg-border" />
-            <span className="text-xs font-medium uppercase tracking-wide text-secondary/70">
+            <span className="text-xs font-medium uppercase tracking-wide text-secondary/80">
               ou busque pelo veículo
             </span>
             <div className="h-px flex-1 bg-border" />

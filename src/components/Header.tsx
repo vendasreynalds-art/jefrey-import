@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, X, Search, ShieldCheck } from "lucide-react";
 import { CATEGORIAS } from "@/data/categorias";
@@ -16,6 +16,15 @@ const NAV_LINKS = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setIsOpen(false);
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isOpen]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur relative">
@@ -103,7 +112,7 @@ export default function Header() {
               </li>
             ))}
             <li className="mt-1 border-t border-border pt-3">
-              <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-secondary/70">
+              <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-secondary/80">
                 Categorias
               </p>
               {CATEGORIAS.map((cat) => (
