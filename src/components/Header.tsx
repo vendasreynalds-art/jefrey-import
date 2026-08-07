@@ -53,7 +53,7 @@ export default function Header() {
         >
           <Image
             src="/logo.png"
-            alt="RaGi Parts"
+            alt="RaGi Import"
             width={174}
             height={44}
             priority
