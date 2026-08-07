@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { CATEGORIAS } from "@/data/categorias";
@@ -8,14 +9,14 @@ export default function Footer() {
     <footer className="border-t border-border bg-primary text-slate-300">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
         <div>
-          <Link
-            href="/"
-            className="flex items-center gap-2 font-heading text-lg font-bold text-white cursor-pointer"
-          >
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-primary">
-              RG
-            </span>
-            RaGi Import
+          <Link href="/" className="inline-flex items-center cursor-pointer">
+            <Image
+              src="/rodape.png"
+              alt="RaGi Import"
+              width={158}
+              height={40}
+              className="h-8 w-auto sm:h-9"
+            />
           </Link>
           <p className="mt-4 text-sm leading-relaxed">
             Importação direta de peças automotivas — faróis, lanternas,
